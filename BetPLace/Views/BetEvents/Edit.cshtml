@@ -1,0 +1,79 @@
+﻿@model BetPlace.Models.BetEvent
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BetEvent</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Team1" class="control-label"></label>
+                <input asp-for="Team1" class="form-control" />
+                <span asp-validation-for="Team1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team2" class="control-label"></label>
+                <input asp-for="Team2" class="form-control" />
+                <span asp-validation-for="Team2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventStartDate" class="control-label"></label>
+                <input asp-for="EventStartDate" class="form-control" />
+                <span asp-validation-for="EventStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventEndDate" class="control-label"></label>
+                <input asp-for="EventEndDate" class="form-control" />
+                <span asp-validation-for="EventEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="coef1" class="control-label"></label>
+                <input asp-for="coef1" class="form-control" />
+                <span asp-validation-for="coef1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="coef0" class="control-label"></label>
+                <input asp-for="coef0" class="form-control" />
+                <span asp-validation-for="coef0" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="coef2" class="control-label"></label>
+                <input asp-for="coef2" class="form-control" />
+                <span asp-validation-for="coef2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team1Description" class="control-label"></label>
+                <input asp-for="Team1Description" class="form-control" />
+                <span asp-validation-for="Team1Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team2Description" class="control-label"></label>
+                <input asp-for="Team2Description" class="form-control" />
+                <span asp-validation-for="Team2Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive" class="control-label"></label>
+                @Html.CheckBoxFor(m => m.IsActive)
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

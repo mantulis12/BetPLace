@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BetPlace.Models.BetEvent>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Team1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Team2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coef1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coef0)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coef2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Team1Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Team2Description)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coef1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coef0)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coef2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team1Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team2Description)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
