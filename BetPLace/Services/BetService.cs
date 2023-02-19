@@ -1,5 +1,6 @@
 ﻿using BetPlace.Data;
 using BetPlace.Models;
+using Microsoft.AspNetCore.Connections.Features;
 using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,10 +14,10 @@ namespace BetPlace.Services
             _context = context;
         }
 
-        public void MakeBet(int EventId, int UserId, double amount, string WinningTeam)
+        public void MakeBet(int EventId, int UserId, decimal amount, string WinningTeam)
         {
             // Checking if balance is good
-            var user = _context.User
+            User? user = _context.User
                 .FirstOrDefault(m => m.Id == UserId);
 
             if (user == null)
@@ -34,13 +35,39 @@ namespace BetPlace.Services
 
             user.Balance = user.Balance - amount;
             _context.Update(user);
+
+            BalanceLog balanceLog = new BalanceLog
+            {
+                Change = amount,
+                CurrentBalance = balance,
+                UserId = user.Id
+            };
+
+            _context.Add(balanceLog);
+
+            BetEvent? betEvent = _context.BetEvent.Where(m => m.Id == EventId).FirstOrDefault();
+
+            if (betEvent == null) {
+                throw new Exception("Bet event not found");
+            }
+
+            var coef = betEvent.coef0;
+
+            if (betEvent.Team1 == WinningTeam)
+            {
+                coef = betEvent.coef1;
+            } else if (betEvent.Team2 == WinningTeam) {
+                coef = betEvent.coef2;
+            }
+
             // adding bet
-            var bet = new Bet
+            Bet bet = new Bet
             {
                 balance = amount,
                 BetEventId = EventId,
                 UserId = UserId,
-                WiningTeam = WinningTeam
+                WiningTeam = WinningTeam,
+                coef = coef
             };
 
             _context.Add(bet);

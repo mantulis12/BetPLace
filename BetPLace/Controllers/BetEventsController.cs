@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
 using NuGet.Protocol;
+using BetPlace.Services;
+using Azure.Core;
 
 namespace BetPlace.Controllers
 {
@@ -36,6 +38,22 @@ namespace BetPlace.Controllers
             return _context.BetEvent != null ? 
                         EventList.ToJson() :
                         "Entity set 'BetPlaceContext.BetEvent'  is null.";
+        }
+
+        // GET: ApiPostBet
+        [HttpPost]
+        public async Task<string> ApiPostBet([FromBody] int EventId, [FromBody] int UserId, [FromBody] decimal amount, [FromBody] string WinningTeam)
+        {
+            BetService betService = new BetService(_context);
+
+            try
+            {
+                betService.MakeBet(EventId, UserId, amount, WinningTeam);
+            } catch (Exception ex) {
+                return ex.Message;
+            }
+
+            return "success";
         }
 
         // GET: BetEvents/Details/5

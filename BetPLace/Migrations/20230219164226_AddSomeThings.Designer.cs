@@ -4,6 +4,7 @@ using BetPlace.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BetPlace.Migrations
 {
     [DbContext(typeof(BetPlaceContext))]
-    partial class BetPlaceContextModelSnapshot : ModelSnapshot
+    [Migration("20230219164226_AddSomeThings")]
+    partial class AddSomeThings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,11 +33,11 @@ namespace BetPlace.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Change")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Change")
+                        .HasColumnType("float");
 
-                    b.Property<decimal>("CurrentBalance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("CurrentBalance")
+                        .HasColumnType("float");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -62,8 +65,8 @@ namespace BetPlace.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("balance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("balance")
+                        .HasColumnType("float");
 
                     b.Property<decimal>("coef")
                         .HasColumnType("decimal(18,2)");
@@ -157,8 +160,8 @@ namespace BetPlace.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
 
                     b.Property<string>("Email")
                         .IsRequired()

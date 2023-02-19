@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
+using BetPlace.Services;
 
 namespace BetPlace.Controllers
 {
@@ -63,6 +64,9 @@ namespace BetPlace.Controllers
             {
                 _context.Add(eventResult);
                 await _context.SaveChangesAsync();
+                EventService eventService = new EventService(_context);
+                eventService.ResultEvent(eventResult.BetEventId, eventResult);
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BetEventId"] = new SelectList(_context.BetEvent, "Id", "Id", eventResult.BetEventId);
