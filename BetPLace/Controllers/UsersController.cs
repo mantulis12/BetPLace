@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
+using BetPlace.Services;
 
 namespace BetPlace.Controllers
 {
     public class UsersController : Controller
     {
         private readonly BetPlaceContext _context;
+        private UserService _userService;
+        private JwtService _jwtService;
 
-        public UsersController(BetPlaceContext context)
+        public UsersController(BetPlaceContext context, UserService userService, JwtService jwtService)
         {
             _context = context;
+            _userService = userService;
+            _jwtService = jwtService;
         }
 
         // GET: Users
@@ -158,6 +163,22 @@ namespace BetPlace.Controllers
         private bool UserExists(int id)
         {
           return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginModel model)
+        {
+            // Verify user credentials
+            var user = _userService.Authenticate(model.Username, model.Password);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            // Generate JWT token
+            var token = _jwtService.GenerateToken(user);
+
+            // Return token as JSON
+            return Ok(new { token });
         }
     }
 }
