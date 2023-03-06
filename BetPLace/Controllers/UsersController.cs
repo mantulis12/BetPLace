@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
 using BetPlace.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace BetPlace.Controllers
 {
@@ -17,11 +18,11 @@ namespace BetPlace.Controllers
         private UserService _userService;
         private JwtService _jwtService;
 
-        public UsersController(BetPlaceContext context, UserService userService, JwtService jwtService)
+        public UsersController(BetPlaceContext context)
         {
             _context = context;
-            _userService = userService;
-            _jwtService = jwtService;
+            _userService = new UserService(context);
+            _jwtService = new JwtService();
         }
 
         // GET: Users
@@ -165,7 +166,8 @@ namespace BetPlace.Controllers
           return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        [HttpPost("login")]
+        [EnableCors]
+        [HttpPost("api/login")]
         public IActionResult Login([FromBody] LoginModel model)
         {
             // Verify user credentials

@@ -18,7 +18,7 @@ namespace BetPlace.Services
         public string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("secret");
+            var key = Encoding.ASCII.GetBytes("secretsecretsecretsecretsecret");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -35,7 +35,7 @@ namespace BetPlace.Services
         public ClaimsPrincipal GetPrincipalFromToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("secret");
+            var key = Encoding.ASCII.GetBytes("secretsecretsecretsecretsecret");
 
             try
             {

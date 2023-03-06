@@ -42,13 +42,13 @@ namespace BetPlace.Controllers
 
         // GET: ApiPostBet
         [HttpPost]
-        public async Task<string> ApiPostBet([FromBody] int EventId, [FromBody] int UserId, [FromBody] decimal amount, [FromBody] string WinningTeam)
+        public async Task<string> ApiPostBet([FromBody] BetPlaceModel betPlaceModel)
         {
             BetService betService = new BetService(_context);
 
             try
             {
-                betService.MakeBet(EventId, UserId, amount, WinningTeam);
+                betService.MakeBet(betPlaceModel.EventId, betPlaceModel.UserId, betPlaceModel.amount, betPlaceModel.WinningTeam);
             } catch (Exception ex) {
                 return ex.Message;
             }

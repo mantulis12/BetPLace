@@ -2,11 +2,16 @@
 using Microsoft.Extensions.DependencyInjection;
 using BetPlace.Data;
 using BetPlace.Models;
+using BetPlace.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BetPlaceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BetPlaceContext") ?? throw new InvalidOperationException("Connection string 'BetPlaceContext' not found.")));
 
+builder.Services.AddCors();
+
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IUserService, UserService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -32,6 +37,14 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseCors(builder =>
+{
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 
 app.MapControllerRoute(
     name: "default",

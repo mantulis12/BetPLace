@@ -31,7 +31,7 @@ namespace BetPlace.Services
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("secret");
+            var key = Encoding.ASCII.GetBytes("secretsecretsecretsecretsecret");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
