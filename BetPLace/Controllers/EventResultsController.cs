@@ -63,7 +63,7 @@ namespace BetPlace.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(eventResult);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 EventService eventService = new EventService(_context);
                 eventService.ResultEvent(eventResult.BetEventId, eventResult);
 

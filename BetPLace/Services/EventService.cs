@@ -53,6 +53,8 @@ namespace BetPlace.Services
                 }
             }
 
+            _context.SaveChanges();
+
         }
     }
 }

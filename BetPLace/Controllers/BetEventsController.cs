@@ -48,7 +48,7 @@ namespace BetPlace.Controllers
 
             try
             {
-                betService.MakeBet(betPlaceModel.EventId, betPlaceModel.UserId, betPlaceModel.amount, betPlaceModel.WinningTeam);
+                betService.MakeBet(betPlaceModel.EventId, betPlaceModel.Token, betPlaceModel.amount, betPlaceModel.WinningTeam);
             } catch (Exception ex) {
                 return ex.Message;
             }

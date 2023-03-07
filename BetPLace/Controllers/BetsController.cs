@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
+using NuGet.Common;
+using BetPlace.Services;
+using NuGet.Protocol;
 
 namespace BetPlace.Controllers
 {
     public class BetsController : Controller
     {
         private readonly BetPlaceContext _context;
+        private JwtService _jwtService;
 
         public BetsController(BetPlaceContext context)
         {
             _context = context;
+            _jwtService = new JwtService();
         }
 
         // GET: Bets
@@ -24,6 +29,20 @@ namespace BetPlace.Controllers
         {
             var betPlaceContext = _context.Bet.Include(b => b.BetEvent).Include(b => b.User);
             return View(await betPlaceContext.ToListAsync());
+        }        
+        
+        // GET: Bets
+        public async Task<string> ApiGetBets([FromBody] GetBetsModel Bet)
+        {
+            var principle = _jwtService.GetPrincipalFromToken(Bet.Token);
+            var claims = principle.Claims.First().Value;
+            var UserId = _context.User.Where(m => m.Email == claims).First().Id;
+
+            var betEvents = _context.Bet.Where(m => m.UserId == UserId).Include(b => b.BetEvent).ToList();
+            foreach (var betEvent in betEvents) {
+                betEvent.User = null;
+            }
+            return betEvents.ToJson();
         }
 
         // GET: Bets/Details/5

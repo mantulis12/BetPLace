@@ -9,13 +9,18 @@ namespace BetPlace.Services
     public class BetService
     {
         private BetPlaceContext _context;
+        private JwtService _jwtService;
         public BetService(BetPlaceContext context)
         {
             _context = context;
+            _jwtService = new JwtService();
         }
 
-        public void MakeBet(int EventId, int UserId, decimal amount, string WinningTeam)
+        public void MakeBet(int EventId, string Token, decimal amount, string WinningTeam)
         {
+            var principle = _jwtService.GetPrincipalFromToken(Token);
+            var claims = principle.Claims.First().Value;
+            var UserId = _context.User.Where(m => m.Email == claims).First().Id;
             // Checking if balance is good
             User? user = _context.User
                 .FirstOrDefault(m => m.Id == UserId);
@@ -71,6 +76,9 @@ namespace BetPlace.Services
             };
 
             _context.Add(bet);
+
+
+            _context.SaveChanges();
                 
         }
         

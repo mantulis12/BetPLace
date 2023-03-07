@@ -36,6 +36,7 @@ namespace BetPlace.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
+                new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.Username)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
