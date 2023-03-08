@@ -49,7 +49,7 @@ namespace BetPlace.Controllers
         // GET: EventResults/Create
         public IActionResult Create()
         {
-            ViewData["BetEventId"] = new SelectList(_context.BetEvent, "Id", "Id");
+            ViewData["BetEventId"] = new SelectList(_context.BetEvent.Where(m => m.IsActive == true), "Id", "Id");
             return View();
         }
 
