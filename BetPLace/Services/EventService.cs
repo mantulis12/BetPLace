@@ -16,7 +16,13 @@ namespace BetPlace.Services
         {
             List < Bet > bets = _context.Bet.Where(m => m.BetEventId == EventId).ToList();
 
+            var BetEvent = _context.BetEvent.Where(m => m.Id == EventId).FirstOrDefault();
             
+            if (BetEvent != null)
+            {
+                BetEvent.IsActive = false;
+                _context.Update(BetEvent);
+            }
 
             foreach (var bet in bets)
             {

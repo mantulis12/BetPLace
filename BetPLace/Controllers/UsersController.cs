@@ -181,6 +181,26 @@ namespace BetPlace.Controllers
 
             // Return token as JSON
             return Ok(new { token });
+        }        
+        
+        [EnableCors]
+        [HttpPost("api/getbalance")]
+        public IActionResult getBalance([FromBody] BalanceRequestModel model)
+        {
+            // Verify user credentials
+            if (model.Token == null)
+            {
+                return Ok(new { });
+            }
+            var principle = _jwtService.GetPrincipalFromToken(model.Token);
+            var claims = principle.Claims.First().Value;
+            var user = _context.User.Where(m => m.Email == claims).First();
+
+            if (user == null)
+                return BadRequest(new { message = "User not found" });
+
+            // Return token as JSON
+            return Ok(new { user.Balance });
         }
     }
 }

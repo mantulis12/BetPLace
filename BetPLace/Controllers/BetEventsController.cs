@@ -33,7 +33,7 @@ namespace BetPlace.Controllers
         // GET: ApiGetAll
         public async Task<string> ApiGetAll()
         {
-            var EventList = await _context.BetEvent.Where<BetEvent>(r => r.EventEndDate >= DateTime.Now).ToListAsync();
+            var EventList = await _context.BetEvent.Where(r => r.EventEndDate >= DateTime.Now && r.IsActive == true).ToListAsync();
 
             return _context.BetEvent != null ? 
                         EventList.ToJson() :

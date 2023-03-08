@@ -34,6 +34,10 @@ namespace BetPlace.Controllers
         // GET: Bets
         public async Task<string> ApiGetBets([FromBody] GetBetsModel Bet)
         {
+            if (Bet.Token == null)
+            {
+                return "";
+            }
             var principle = _jwtService.GetPrincipalFromToken(Bet.Token);
             var claims = principle.Claims.First().Value;
             var UserId = _context.User.Where(m => m.Email == claims).First().Id;
