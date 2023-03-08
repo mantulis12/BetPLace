@@ -60,17 +60,12 @@ namespace BetPlace.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,WiningTeam,BetEventId")] EventResult eventResult)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(eventResult);
-                _context.SaveChanges();
-                EventService eventService = new EventService(_context);
-                eventService.ResultEvent(eventResult.BetEventId, eventResult);
+            _context.Add(eventResult);
+            _context.SaveChanges();
+            EventService eventService = new EventService(_context);
+            eventService.ResultEvent(eventResult.BetEventId, eventResult);
 
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["BetEventId"] = new SelectList(_context.BetEvent, "Id", "Id", eventResult.BetEventId);
-            return View(eventResult);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: EventResults/Edit/5

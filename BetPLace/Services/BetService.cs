@@ -45,7 +45,8 @@ namespace BetPlace.Services
             {
                 Change = amount,
                 CurrentBalance = balance,
-                UserId = user.Id
+                UserId = user.Id,
+                OperationType = 1
             };
 
             _context.Add(balanceLog);

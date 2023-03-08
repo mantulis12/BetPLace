@@ -23,6 +23,11 @@ namespace BetPlace.Services
                 User? user = _context.User
                 .FirstOrDefault(m => m.Id == bet.UserId);
 
+                if (bet.status != 0)
+                {
+                    continue;
+                }
+
                 if (eventResult.WiningTeam == bet.WiningTeam)
                 {
                     
@@ -40,6 +45,7 @@ namespace BetPlace.Services
                         UserId = bet.UserId,
                         Change = amount,
                         CurrentBalance = user.Balance,
+                        OperationType = 2
                     };
 
                     _context.Add(balanceLog);
@@ -48,7 +54,7 @@ namespace BetPlace.Services
 
                     _context.Update(user);
                 } else {
-                    bet.status = 1;
+                    bet.status = 2;
                     _context.Update(bet);
                 }
             }

@@ -7,6 +7,8 @@ namespace BetPlace.Models
         public int Id { get; set; }
         public decimal Change { get; set; }
         public int UserId { get; set; }
+
+        public int OperationType { get; set; }
         public decimal CurrentBalance { get; set; }
     }
 }
