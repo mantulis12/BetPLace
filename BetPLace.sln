@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetPlace", "BetPlace\BetPlace.csproj", "{31FD1C39-56C9-48C3-A0E5-02EA3216C795}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetPlace", "BetPlace\BetPlace.csproj", "{31FD1C39-56C9-48C3-A0E5-02EA3216C795}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetPlaceConsole1", "BetPlaceConsole1\BetPlaceConsole1.csproj", "{D70ED467-A4FA-4E78-9E08-14AF35792728}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{31FD1C39-56C9-48C3-A0E5-02EA3216C795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31FD1C39-56C9-48C3-A0E5-02EA3216C795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31FD1C39-56C9-48C3-A0E5-02EA3216C795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D70ED467-A4FA-4E78-9E08-14AF35792728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70ED467-A4FA-4E78-9E08-14AF35792728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70ED467-A4FA-4E78-9E08-14AF35792728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70ED467-A4FA-4E78-9E08-14AF35792728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
