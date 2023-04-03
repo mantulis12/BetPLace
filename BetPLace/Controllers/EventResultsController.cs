@@ -63,7 +63,7 @@ namespace BetPlace.Controllers
             _context.Add(eventResult);
             _context.SaveChanges();
             EventService eventService = new EventService(_context);
-            eventService.ResultEvent(eventResult.BetEventId, eventResult);
+            eventService.ResultEventKafka(eventResult.BetEventId, eventResult);
 
             return RedirectToAction(nameof(Index));
         }
