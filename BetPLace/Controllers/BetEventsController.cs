@@ -10,6 +10,7 @@ using BetPlace.Models;
 using NuGet.Protocol;
 using BetPlace.Services;
 using Azure.Core;
+using Serilog;
 
 namespace BetPlace.Controllers
 {

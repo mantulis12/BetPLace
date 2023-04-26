@@ -1,0 +1,263 @@
+2023-04-26 17:20:59.770 +03:00 [WRN] No store type was specified for the decimal property 'Change' on entity type 'BalanceLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:20:59.866 +03:00 [WRN] No store type was specified for the decimal property 'CurrentBalance' on entity type 'BalanceLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:20:59.872 +03:00 [WRN] No store type was specified for the decimal property 'balance' on entity type 'Bet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:20:59.875 +03:00 [WRN] No store type was specified for the decimal property 'coef' on entity type 'Bet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:20:59.879 +03:00 [WRN] No store type was specified for the decimal property 'coef0' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:20:59.882 +03:00 [WRN] No store type was specified for the decimal property 'coef1' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:20:59.887 +03:00 [WRN] No store type was specified for the decimal property 'coef2' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:20:59.891 +03:00 [WRN] No store type was specified for the decimal property 'Balance' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:02.536 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [BetEvent] AS [b]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-04-26 17:21:02.774 +03:00 [INF] User profile is available. Using 'C:\Users\Mantas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-04-26 17:21:02.991 +03:00 [INF] Now listening on: https://localhost:7200
+2023-04-26 17:21:02.994 +03:00 [INF] Now listening on: http://localhost:5211
+2023-04-26 17:21:02.998 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-26 17:21:03.000 +03:00 [INF] Hosting environment: Development
+2023-04-26 17:21:03.001 +03:00 [INF] Content root path: C:\Users\Mantas\source\repos\mantulis12\BetPLace\BetPlace
+2023-04-26 17:21:03.810 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/ - -
+2023-04-26 17:21:03.941 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.HomeController.Index (BetPlace)'
+2023-04-26 17:21:03.984 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller BetPlace.Controllers.HomeController (BetPlace).
+2023-04-26 17:21:04.020 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:04.285 +03:00 [INF] Executed ViewResult - view Index executed in 275.9156ms.
+2023-04-26 17:21:04.294 +03:00 [INF] Executed action BetPlace.Controllers.HomeController.Index (BetPlace) in 302.97ms
+2023-04-26 17:21:04.297 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.HomeController.Index (BetPlace)'
+2023-04-26 17:21:04.344 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/ - - - 200 - text/html;+charset=utf-8 538.7999ms
+2023-04-26 17:21:04.458 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:04.486 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 28.3049ms
+2023-04-26 17:21:04.753 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:04.935 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 181.9939ms
+2023-04-26 17:21:11.733 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/EventResults - -
+2023-04-26 17:21:11.741 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.EventResultsController.Index (BetPlace)'
+2023-04-26 17:21:11.753 +03:00 [INF] Route matched with {action = "Index", controller = "EventResults"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller BetPlace.Controllers.EventResultsController (BetPlace).
+2023-04-26 17:21:11.910 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[BetEventId], [e].[WiningTeam], [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [EventResult] AS [e]
+INNER JOIN [BetEvent] AS [b] ON [e].[BetEventId] = [b].[Id]
+2023-04-26 17:21:11.931 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:11.952 +03:00 [INF] Executed ViewResult - view Index executed in 21.8983ms.
+2023-04-26 17:21:11.954 +03:00 [INF] Executed action BetPlace.Controllers.EventResultsController.Index (BetPlace) in 193.4084ms
+2023-04-26 17:21:11.956 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.EventResultsController.Index (BetPlace)'
+2023-04-26 17:21:11.965 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/EventResults - - - 200 - text/html;+charset=utf-8 231.1758ms
+2023-04-26 17:21:12.016 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:12.020 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.8426ms
+2023-04-26 17:21:12.073 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:12.110 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 37.2795ms
+2023-04-26 17:21:12.895 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/Bets - -
+2023-04-26 17:21:12.902 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetsController.Index (BetPlace)'
+2023-04-26 17:21:12.911 +03:00 [INF] Route matched with {action = "Index", controller = "Bets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller BetPlace.Controllers.BetsController (BetPlace).
+2023-04-26 17:21:12.983 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[BetEventId], [b].[UserId], [b].[WiningTeam], [b].[balance], [b].[coef], [b].[status], [b0].[Id], [b0].[EventEndDate], [b0].[EventStartDate], [b0].[IsActive], [b0].[Team1], [b0].[Team1Description], [b0].[Team2], [b0].[Team2Description], [b0].[coef0], [b0].[coef1], [b0].[coef2], [u].[Id], [u].[Balance], [u].[Email], [u].[IsAdmin], [u].[Password], [u].[Token], [u].[Username]
+FROM [Bet] AS [b]
+INNER JOIN [BetEvent] AS [b0] ON [b].[BetEventId] = [b0].[Id]
+INNER JOIN [User] AS [u] ON [b].[UserId] = [u].[Id]
+2023-04-26 17:21:12.991 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:13.013 +03:00 [INF] Executed ViewResult - view Index executed in 23.0228ms.
+2023-04-26 17:21:13.017 +03:00 [INF] Executed action BetPlace.Controllers.BetsController.Index (BetPlace) in 101.2745ms
+2023-04-26 17:21:13.021 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetsController.Index (BetPlace)'
+2023-04-26 17:21:13.024 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/Bets - - - 200 - text/html;+charset=utf-8 129.5478ms
+2023-04-26 17:21:13.086 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:13.093 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.8303ms
+2023-04-26 17:21:13.126 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:13.165 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.7767ms
+2023-04-26 17:21:14.240 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/BetEvents - -
+2023-04-26 17:21:14.244 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetEventsController.Index (BetPlace)'
+2023-04-26 17:21:14.249 +03:00 [INF] Route matched with {action = "Index", controller = "BetEvents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller BetPlace.Controllers.BetEventsController (BetPlace).
+2023-04-26 17:21:14.288 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [BetEvent] AS [b]
+WHERE [b].[EventEndDate] >= GETDATE()
+2023-04-26 17:21:14.360 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:14.417 +03:00 [INF] Executed ViewResult - view Index executed in 57.297ms.
+2023-04-26 17:21:14.420 +03:00 [INF] Executed action BetPlace.Controllers.BetEventsController.Index (BetPlace) in 162.9715ms
+2023-04-26 17:21:14.422 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetEventsController.Index (BetPlace)'
+2023-04-26 17:21:14.430 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/BetEvents - - - 200 - text/html;+charset=utf-8 190.3011ms
+2023-04-26 17:21:14.480 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:14.486 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.8521ms
+2023-04-26 17:21:14.550 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:14.591 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 40.8342ms
+2023-04-26 17:21:15.205 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/BetEvents/Details/1 - -
+2023-04-26 17:21:15.209 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetEventsController.Details (BetPlace)'
+2023-04-26 17:21:15.222 +03:00 [INF] Route matched with {action = "Details", controller = "BetEvents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller BetPlace.Controllers.BetEventsController (BetPlace).
+2023-04-26 17:21:15.289 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [BetEvent] AS [b]
+WHERE [b].[Id] = @__id_0
+2023-04-26 17:21:15.297 +03:00 [INF] Executing ViewResult, running view Details.
+2023-04-26 17:21:15.320 +03:00 [INF] Executed ViewResult - view Details executed in 23.8439ms.
+2023-04-26 17:21:15.325 +03:00 [INF] Executed action BetPlace.Controllers.BetEventsController.Details (BetPlace) in 97.8279ms
+2023-04-26 17:21:15.327 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetEventsController.Details (BetPlace)'
+2023-04-26 17:21:15.334 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/BetEvents/Details/1 - - - 200 - text/html;+charset=utf-8 129.6254ms
+2023-04-26 17:21:15.400 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:15.403 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.3025ms
+2023-04-26 17:21:15.456 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:15.499 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 42.4047ms
+2023-04-26 17:21:43.268 +03:00 [WRN] No store type was specified for the decimal property 'Change' on entity type 'BalanceLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:43.425 +03:00 [WRN] No store type was specified for the decimal property 'CurrentBalance' on entity type 'BalanceLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:43.434 +03:00 [WRN] No store type was specified for the decimal property 'balance' on entity type 'Bet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:43.440 +03:00 [WRN] No store type was specified for the decimal property 'coef' on entity type 'Bet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:43.452 +03:00 [WRN] No store type was specified for the decimal property 'coef0' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:43.458 +03:00 [WRN] No store type was specified for the decimal property 'coef1' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:43.482 +03:00 [WRN] No store type was specified for the decimal property 'coef2' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:43.490 +03:00 [WRN] No store type was specified for the decimal property 'Balance' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:21:45.754 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [BetEvent] AS [b]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-04-26 17:21:45.965 +03:00 [INF] User profile is available. Using 'C:\Users\Mantas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-04-26 17:21:46.136 +03:00 [INF] Now listening on: https://localhost:7200
+2023-04-26 17:21:46.138 +03:00 [INF] Now listening on: http://localhost:5211
+2023-04-26 17:21:46.143 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-26 17:21:46.145 +03:00 [INF] Hosting environment: Development
+2023-04-26 17:21:46.146 +03:00 [INF] Content root path: C:\Users\Mantas\source\repos\mantulis12\BetPLace\BetPlace
+2023-04-26 17:21:47.137 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/ - -
+2023-04-26 17:21:47.276 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.HomeController.Index (BetPlace)'
+2023-04-26 17:21:47.310 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller BetPlace.Controllers.HomeController (BetPlace).
+2023-04-26 17:21:47.344 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:47.595 +03:00 [INF] Executed ViewResult - view Index executed in 260.6255ms.
+2023-04-26 17:21:47.604 +03:00 [INF] Executed action BetPlace.Controllers.HomeController.Index (BetPlace) in 287.2025ms
+2023-04-26 17:21:47.607 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.HomeController.Index (BetPlace)'
+2023-04-26 17:21:47.657 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/ - - - 200 - text/html;+charset=utf-8 524.3303ms
+2023-04-26 17:21:47.780 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:47.817 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 35.9992ms
+2023-04-26 17:21:48.047 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:48.169 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 121.3075ms
+2023-04-26 17:21:50.046 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/Bets - -
+2023-04-26 17:21:50.054 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetsController.Index (BetPlace)'
+2023-04-26 17:21:50.064 +03:00 [INF] Route matched with {action = "Index", controller = "Bets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller BetPlace.Controllers.BetsController (BetPlace).
+2023-04-26 17:21:50.279 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[BetEventId], [b].[UserId], [b].[WiningTeam], [b].[balance], [b].[coef], [b].[status], [b0].[Id], [b0].[EventEndDate], [b0].[EventStartDate], [b0].[IsActive], [b0].[Team1], [b0].[Team1Description], [b0].[Team2], [b0].[Team2Description], [b0].[coef0], [b0].[coef1], [b0].[coef2], [u].[Id], [u].[Balance], [u].[Email], [u].[IsAdmin], [u].[Password], [u].[Token], [u].[Username]
+FROM [Bet] AS [b]
+INNER JOIN [BetEvent] AS [b0] ON [b].[BetEventId] = [b0].[Id]
+INNER JOIN [User] AS [u] ON [b].[UserId] = [u].[Id]
+2023-04-26 17:21:50.306 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:50.334 +03:00 [INF] Executed ViewResult - view Index executed in 29.4784ms.
+2023-04-26 17:21:50.337 +03:00 [INF] Executed action BetPlace.Controllers.BetsController.Index (BetPlace) in 261.4016ms
+2023-04-26 17:21:50.339 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetsController.Index (BetPlace)'
+2023-04-26 17:21:50.356 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/Bets - - - 200 - text/html;+charset=utf-8 309.5970ms
+2023-04-26 17:21:50.398 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:50.403 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.9953ms
+2023-04-26 17:21:50.477 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:50.538 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 60.6047ms
+2023-04-26 17:21:51.629 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/EventResults - -
+2023-04-26 17:21:51.640 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.EventResultsController.Index (BetPlace)'
+2023-04-26 17:21:51.647 +03:00 [INF] Route matched with {action = "Index", controller = "EventResults"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller BetPlace.Controllers.EventResultsController (BetPlace).
+2023-04-26 17:21:51.734 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[BetEventId], [e].[WiningTeam], [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [EventResult] AS [e]
+INNER JOIN [BetEvent] AS [b] ON [e].[BetEventId] = [b].[Id]
+2023-04-26 17:21:51.741 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:51.759 +03:00 [INF] Executed ViewResult - view Index executed in 18.8618ms.
+2023-04-26 17:21:51.761 +03:00 [INF] Executed action BetPlace.Controllers.EventResultsController.Index (BetPlace) in 103.7124ms
+2023-04-26 17:21:51.763 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.EventResultsController.Index (BetPlace)'
+2023-04-26 17:21:51.766 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/EventResults - - - 200 - text/html;+charset=utf-8 136.8471ms
+2023-04-26 17:21:51.822 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:51.828 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 6.7361ms
+2023-04-26 17:21:51.893 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:51.941 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 48.2236ms
+2023-04-26 17:21:52.438 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/BetEvents - -
+2023-04-26 17:21:52.442 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetEventsController.Index (BetPlace)'
+2023-04-26 17:21:52.452 +03:00 [INF] Route matched with {action = "Index", controller = "BetEvents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller BetPlace.Controllers.BetEventsController (BetPlace).
+2023-04-26 17:21:52.504 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [BetEvent] AS [b]
+WHERE [b].[EventEndDate] >= GETDATE()
+2023-04-26 17:21:52.587 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:21:52.628 +03:00 [INF] Executed ViewResult - view Index executed in 41.882ms.
+2023-04-26 17:21:52.630 +03:00 [INF] Executed action BetPlace.Controllers.BetEventsController.Index (BetPlace) in 166.6893ms
+2023-04-26 17:21:52.633 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetEventsController.Index (BetPlace)'
+2023-04-26 17:21:52.637 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/BetEvents - - - 200 - text/html;+charset=utf-8 198.3519ms
+2023-04-26 17:21:52.693 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:52.698 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 5.2959ms
+2023-04-26 17:21:52.768 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:52.816 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 47.6414ms
+2023-04-26 17:21:53.971 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/BetEvents/Details/1 - -
+2023-04-26 17:21:53.976 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetEventsController.Details (BetPlace)'
+2023-04-26 17:21:53.990 +03:00 [INF] Route matched with {action = "Details", controller = "BetEvents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller BetPlace.Controllers.BetEventsController (BetPlace).
+2023-04-26 17:21:54.009 +03:00 [INF] Some information for testing
+2023-04-26 17:21:54.062 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [BetEvent] AS [b]
+WHERE [b].[Id] = @__id_0
+2023-04-26 17:21:54.070 +03:00 [INF] Executing ViewResult, running view Details.
+2023-04-26 17:21:54.089 +03:00 [INF] Executed ViewResult - view Details executed in 19.784ms.
+2023-04-26 17:21:54.091 +03:00 [INF] Executed action BetPlace.Controllers.BetEventsController.Details (BetPlace) in 96.1427ms
+2023-04-26 17:21:54.093 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetEventsController.Details (BetPlace)'
+2023-04-26 17:21:54.097 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/BetEvents/Details/1 - - - 200 - text/html;+charset=utf-8 125.5165ms
+2023-04-26 17:21:54.163 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:21:54.167 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.5129ms
+2023-04-26 17:21:54.212 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:21:54.254 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 42.6227ms
+2023-04-26 17:22:23.238 +03:00 [WRN] No store type was specified for the decimal property 'Change' on entity type 'BalanceLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:23.316 +03:00 [WRN] No store type was specified for the decimal property 'CurrentBalance' on entity type 'BalanceLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:23.322 +03:00 [WRN] No store type was specified for the decimal property 'balance' on entity type 'Bet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:23.325 +03:00 [WRN] No store type was specified for the decimal property 'coef' on entity type 'Bet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:23.349 +03:00 [WRN] No store type was specified for the decimal property 'coef0' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:23.355 +03:00 [WRN] No store type was specified for the decimal property 'coef1' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:23.359 +03:00 [WRN] No store type was specified for the decimal property 'coef2' on entity type 'BetEvent'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:23.399 +03:00 [WRN] No store type was specified for the decimal property 'Balance' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-04-26 17:22:25.972 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [BetEvent] AS [b]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-04-26 17:22:26.204 +03:00 [INF] User profile is available. Using 'C:\Users\Mantas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-04-26 17:22:26.388 +03:00 [INF] Now listening on: https://localhost:7200
+2023-04-26 17:22:26.391 +03:00 [INF] Now listening on: http://localhost:5211
+2023-04-26 17:22:26.396 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-26 17:22:26.398 +03:00 [INF] Hosting environment: Development
+2023-04-26 17:22:26.401 +03:00 [INF] Content root path: C:\Users\Mantas\source\repos\mantulis12\BetPLace\BetPlace
+2023-04-26 17:22:27.508 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/ - -
+2023-04-26 17:22:27.674 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.HomeController.Index (BetPlace)'
+2023-04-26 17:22:27.703 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller BetPlace.Controllers.HomeController (BetPlace).
+2023-04-26 17:22:27.742 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:22:27.986 +03:00 [INF] Executed ViewResult - view Index executed in 257.0382ms.
+2023-04-26 17:22:27.995 +03:00 [INF] Executed action BetPlace.Controllers.HomeController.Index (BetPlace) in 285.7319ms
+2023-04-26 17:22:28.000 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.HomeController.Index (BetPlace)'
+2023-04-26 17:22:28.057 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/ - - - 200 - text/html;+charset=utf-8 557.3180ms
+2023-04-26 17:22:28.183 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:22:28.217 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 33.4193ms
+2023-04-26 17:22:28.455 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:22:28.564 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 108.9385ms
+2023-04-26 17:22:33.150 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/BetEvents - -
+2023-04-26 17:22:33.159 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetEventsController.Index (BetPlace)'
+2023-04-26 17:22:33.167 +03:00 [INF] Route matched with {action = "Index", controller = "BetEvents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller BetPlace.Controllers.BetEventsController (BetPlace).
+2023-04-26 17:22:33.297 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [BetEvent] AS [b]
+WHERE [b].[EventEndDate] >= GETDATE()
+2023-04-26 17:22:33.376 +03:00 [INF] Executing ViewResult, running view Index.
+2023-04-26 17:22:33.420 +03:00 [INF] Executed ViewResult - view Index executed in 45.5522ms.
+2023-04-26 17:22:33.424 +03:00 [INF] Executed action BetPlace.Controllers.BetEventsController.Index (BetPlace) in 249.8886ms
+2023-04-26 17:22:33.427 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetEventsController.Index (BetPlace)'
+2023-04-26 17:22:33.443 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/BetEvents - - - 200 - text/html;+charset=utf-8 292.2463ms
+2023-04-26 17:22:33.497 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:22:33.501 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 4.3584ms
+2023-04-26 17:22:33.559 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:22:33.612 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 52.8124ms
+2023-04-26 17:22:36.378 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/BetEvents/Details/1 - -
+2023-04-26 17:22:36.388 +03:00 [INF] Executing endpoint 'BetPlace.Controllers.BetEventsController.Details (BetPlace)'
+2023-04-26 17:22:36.402 +03:00 [INF] Route matched with {action = "Details", controller = "BetEvents"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(System.Nullable`1[System.Int32]) on controller BetPlace.Controllers.BetEventsController (BetPlace).
+2023-04-26 17:22:36.421 +03:00 [INF] Some information for testing
+2023-04-26 17:22:36.539 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[EventEndDate], [b].[EventStartDate], [b].[IsActive], [b].[Team1], [b].[Team1Description], [b].[Team2], [b].[Team2Description], [b].[coef0], [b].[coef1], [b].[coef2]
+FROM [BetEvent] AS [b]
+WHERE [b].[Id] = @__id_0
+2023-04-26 17:22:36.547 +03:00 [INF] Executing ViewResult, running view Details.
+2023-04-26 17:22:36.565 +03:00 [INF] Executed ViewResult - view Details executed in 18.7193ms.
+2023-04-26 17:22:36.568 +03:00 [INF] Executed action BetPlace.Controllers.BetEventsController.Details (BetPlace) in 160.0192ms
+2023-04-26 17:22:36.569 +03:00 [INF] Executed endpoint 'BetPlace.Controllers.BetEventsController.Details (BetPlace)'
+2023-04-26 17:22:36.573 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/BetEvents/Details/1 - - - 200 - text/html;+charset=utf-8 194.0889ms
+2023-04-26 17:22:36.630 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - -
+2023-04-26 17:22:36.633 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 3.6981ms
+2023-04-26 17:22:36.674 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7200/_vs/browserLink - -
+2023-04-26 17:22:36.726 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7200/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 52.5732ms

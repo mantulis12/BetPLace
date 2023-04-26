@@ -10,6 +10,7 @@ using BetPlace.Models;
 using NuGet.Common;
 using BetPlace.Services;
 using NuGet.Protocol;
+using Serilog;
 
 namespace BetPlace.Controllers
 {

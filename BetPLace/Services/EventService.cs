@@ -1,6 +1,7 @@
 ﻿using BetPlace.Data;
 using BetPlace.Models;
 using Confluent.Kafka;
+using Serilog;
 
 namespace BetPlace.Services
 {
@@ -22,7 +23,8 @@ namespace BetPlace.Services
 
             using (var producer = new ProducerBuilder<int, string>(config).Build())
             {
-               producer.Produce("bets", new Message<int, string> { Key=EventId, Value=eventResult.WiningTeam });
+                producer.Produce("bets", new Message<int, string> { Key=EventId, Value=eventResult.WiningTeam });
+                Log.Information("Events had been produced and sent to Kafka");
             }
         }
 

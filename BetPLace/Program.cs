@@ -3,10 +3,20 @@ using Microsoft.Extensions.DependencyInjection;
 using BetPlace.Data;
 using BetPlace.Models;
 using BetPlace.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BetPlaceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BetPlaceContext") ?? throw new InvalidOperationException("Connection string 'BetPlaceContext' not found.")));
+
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
 
 builder.Services.AddCors();
 

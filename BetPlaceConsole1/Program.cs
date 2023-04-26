@@ -3,6 +3,7 @@ using BetPlaceConsole1.Data;
 using Confluent.Kafka;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System.Threading;
 
 namespace BetPlaceConsole1
@@ -11,6 +12,14 @@ namespace BetPlaceConsole1
     {
         static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Console()
+                .CreateLogger();
+
+
+            Log.Information("Consumer started");
+
             var _context = new BetPlaceContext();
 
             var config = new ConsumerConfig
@@ -30,7 +39,7 @@ namespace BetPlaceConsole1
                     var consumeResult = consumer.Consume();
                     var WinningTeam = consumeResult.Value;
                     int EventId = consumeResult.Key;
-
+                    Log.Information("Event started consume");
 
                     List<Bet> bets = _context.Bet.Where(m => m.BetEventId == EventId).ToList();
 
@@ -87,6 +96,7 @@ namespace BetPlaceConsole1
                     }
 
                     _context.SaveChanges();
+                    Log.Information("Event ended consume");
                     Console.WriteLine("Event "+EventId+" resulted");
 
                 }
