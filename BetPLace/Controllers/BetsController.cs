@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
-using NuGet.Common;
 using BetPlace.Services;
 using NuGet.Protocol;
-using Serilog;
+using BetPlace.Repositories;
 
 namespace BetPlace.Controllers
 {
@@ -18,18 +13,21 @@ namespace BetPlace.Controllers
     {
         private readonly BetPlaceContext _context;
         private JwtService _jwtService;
+        private BetsRepository _betRepository;
+        private UserRepository _userRepository;
 
         public BetsController(BetPlaceContext context)
         {
             _context = context;
             _jwtService = new JwtService();
+            _betRepository = new BetsRepository(context);
+            _userRepository = new UserRepository(context);
         }
 
         // GET: Bets
         public async Task<IActionResult> Index()
         {
-            var betPlaceContext = _context.Bet.Include(b => b.BetEvent).Include(b => b.User);
-            return View(await betPlaceContext.ToListAsync());
+            return View(await _betRepository.GetBetsAsync());
         }        
         
         // GET: Bets
@@ -41,9 +39,9 @@ namespace BetPlace.Controllers
             }
             var principle = _jwtService.GetPrincipalFromToken(Bet.Token);
             var claims = principle.Claims.First().Value;
-            var UserId = _context.User.Where(m => m.Email == claims).First().Id;
+            var UserId = _userRepository.GetUserIdByEmail(claims);
 
-            var betEvents = _context.Bet.Where(m => m.UserId == UserId).Include(b => b.BetEvent).ToList();
+            var betEvents = _betRepository.GetBets(UserId);
             foreach (var betEvent in betEvents) {
                 betEvent.User = null;
             }
@@ -58,10 +56,8 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var bet = await _context.Bet
-                .Include(b => b.BetEvent)
-                .Include(b => b.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var bet = await _betRepository.GetBetById(id);
+
             if (bet == null)
             {
                 return NotFound();
@@ -87,7 +83,7 @@ namespace BetPlace.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bet);
+                _betRepository.AddBet(bet);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -104,7 +100,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var bet = await _context.Bet.FindAsync(id);
+            var bet = await _betRepository.GetBetById(id);
             if (bet == null)
             {
                 return NotFound();
@@ -130,7 +126,7 @@ namespace BetPlace.Controllers
             {
                 try
                 {
-                    _context.Update(bet);
+                    _betRepository.UpdateBet(bet);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -159,10 +155,8 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var bet = await _context.Bet
-                .Include(b => b.BetEvent)
-                .Include(b => b.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var bet = _betRepository.GetBetById(id);
+
             if (bet == null)
             {
                 return NotFound();

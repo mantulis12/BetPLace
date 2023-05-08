@@ -1,30 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
 using BetPlace.Services;
+using BetPlace.Repositories;
 
 namespace BetPlace.Controllers
 {
     public class EventResultsController : Controller
     {
         private readonly BetPlaceContext _context;
+        private EventResultsRepository _eventResultsRepository;
 
         public EventResultsController(BetPlaceContext context)
         {
             _context = context;
+            _eventResultsRepository = new EventResultsRepository(context);
         }
 
         // GET: EventResults
         public async Task<IActionResult> Index()
         {
-            var betPlaceContext = _context.EventResult.Include(e => e.BetEvent);
-            return View(await betPlaceContext.ToListAsync());
+            return View(await _eventResultsRepository.GetEventResultsListAsync());
         }
 
         // GET: EventResults/Details/5
@@ -35,9 +33,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var eventResult = await _context.EventResult
-                .Include(e => e.BetEvent)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var eventResult = await _eventResultsRepository.GetEventsResultsAsync(id);
             if (eventResult == null)
             {
                 return NotFound();
@@ -60,7 +56,7 @@ namespace BetPlace.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,WiningTeam,BetEventId")] EventResult eventResult)
         {
-            _context.Add(eventResult);
+            _eventResultsRepository.AddResult(eventResult);
             _context.SaveChanges();
             EventService eventService = new EventService(_context);
             eventService.ResultEventKafka(eventResult.BetEventId, eventResult);
@@ -76,7 +72,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var eventResult = await _context.EventResult.FindAsync(id);
+            var eventResult = await _eventResultsRepository.GetResultWithoutBetEvent(id);
             if (eventResult == null)
             {
                 return NotFound();
@@ -101,7 +97,7 @@ namespace BetPlace.Controllers
             {
                 try
                 {
-                    _context.Update(eventResult);
+                    _eventResultsRepository.UpdateResult(eventResult);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -129,9 +125,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var eventResult = await _context.EventResult
-                .Include(e => e.BetEvent)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var eventResult = await _eventResultsRepository.GetEventsResultsAsync(id);
             if (eventResult == null)
             {
                 return NotFound();
@@ -149,10 +143,10 @@ namespace BetPlace.Controllers
             {
                 return Problem("Entity set 'BetPlaceContext.EventResult'  is null.");
             }
-            var eventResult = await _context.EventResult.FindAsync(id);
+            var eventResult = await _eventResultsRepository.GetEventsResultsAsync(id);
             if (eventResult != null)
             {
-                _context.EventResult.Remove(eventResult);
+                _eventResultsRepository.RemoveResultEvent(eventResult);
             }
             
             await _context.SaveChangesAsync();

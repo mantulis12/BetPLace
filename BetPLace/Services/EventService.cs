@@ -27,11 +27,5 @@ namespace BetPlace.Services
                 Log.Information("Events had been produced and sent to Kafka");
             }
         }
-
-        public void ResultEvent(int EventId, EventResult eventResult)
-        {
-
-
-        }
     }
 }

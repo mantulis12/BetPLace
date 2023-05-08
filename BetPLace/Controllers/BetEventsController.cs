@@ -11,30 +11,33 @@ using NuGet.Protocol;
 using BetPlace.Services;
 using Azure.Core;
 using Serilog;
+using BetPlace.Repositories;
 
 namespace BetPlace.Controllers
 {
     public class BetEventsController : Controller
     {
         private readonly BetPlaceContext _context;
+        private BetEventRepository _betEventRepository;
 
         public BetEventsController(BetPlaceContext context)
         {
             _context = context;
+            _betEventRepository = new BetEventRepository(_context);
         }
 
         // GET: BetEvents
         public async Task<IActionResult> Index()
         {
               return _context.BetEvent != null ? 
-                          View(await _context.BetEvent.Where<BetEvent>(r => r.EventEndDate >= DateTime.Now).ToListAsync()) :
+                          View(await _betEventRepository.GetBetEventsListAsync()) :
                           Problem("Entity set 'BetPlaceContext.BetEvent'  is null.");
         }        
         
         // GET: ApiGetAll
         public async Task<string> ApiGetAll()
         {
-            var EventList = await _context.BetEvent.Where(r => r.EventEndDate >= DateTime.Now && r.IsActive == true).ToListAsync();
+            var EventList = await _betEventRepository.GetBetEventsListAsync();
 
             return _context.BetEvent != null ? 
                         EventList.ToJson() :
@@ -65,8 +68,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var betEvent = await _context.BetEvent
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var betEvent = _betEventRepository.GetBetEventById(id);
             if (betEvent == null)
             {
                 return NotFound();
@@ -90,7 +92,7 @@ namespace BetPlace.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(betEvent);
+                _betEventRepository.AddEvent(betEvent);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -105,7 +107,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var betEvent = await _context.BetEvent.FindAsync(id);
+            var betEvent = await _betEventRepository.GetBetEventAsync(id);
             if (betEvent == null)
             {
                 return NotFound();
@@ -129,7 +131,7 @@ namespace BetPlace.Controllers
             {
                 try
                 {
-                    _context.Update(betEvent);
+                    _betEventRepository.UpdateEvent(betEvent);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -156,8 +158,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var betEvent = await _context.BetEvent
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var betEvent = await _betEventRepository.GetBetEventAsync(id);
             if (betEvent == null)
             {
                 return NotFound();

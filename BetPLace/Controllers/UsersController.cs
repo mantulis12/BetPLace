@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BetPlace.Data;
 using BetPlace.Models;
 using BetPlace.Services;
 using Microsoft.AspNetCore.Cors;
+using BetPlace.Repositories;
 
 namespace BetPlace.Controllers
 {
@@ -17,19 +13,21 @@ namespace BetPlace.Controllers
         private readonly BetPlaceContext _context;
         private UserService _userService;
         private JwtService _jwtService;
+        private UserRepository _userRepository;
 
         public UsersController(BetPlaceContext context)
         {
             _context = context;
             _userService = new UserService(context);
             _jwtService = new JwtService();
+            _userRepository = new UserRepository(context);
         }
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
               return _context.User != null ? 
-                          View(await _context.User.ToListAsync()) :
+                          View(await _userRepository.GetUsersAsync()) :
                           Problem("Entity set 'BetPlaceContext.User'  is null.");
         }
 
@@ -41,8 +39,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _userRepository.GetUserByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -66,7 +63,7 @@ namespace BetPlace.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _userRepository.AddUser(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -81,7 +78,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
+            var user = await _userRepository.GetUserByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -105,7 +102,7 @@ namespace BetPlace.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _userRepository.UpdateUser(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -132,8 +129,7 @@ namespace BetPlace.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _userRepository.GetUserByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -151,10 +147,10 @@ namespace BetPlace.Controllers
             {
                 return Problem("Entity set 'BetPlaceContext.User'  is null.");
             }
-            var user = await _context.User.FindAsync(id);
+            var user = await _userRepository.GetUserByIdAsync(id);
             if (user != null)
             {
-                _context.User.Remove(user);
+                _userRepository.DeleteUser(user);
             }
             
             await _context.SaveChangesAsync();
@@ -163,7 +159,7 @@ namespace BetPlace.Controllers
 
         private bool UserExists(int id)
         {
-          return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _userRepository.IfUserExists(id);
         }
 
         [EnableCors]
